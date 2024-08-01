@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  app
 //
-//  Created by Do Tran on 23/07/2024.
+//  Created by dotn on 23/07/2024.
 //
 
 import UIKit

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BaseURL</key>
-	<string>$(APP_SCHEME)//$(APP_DOMAIN)</string>
+	<string>$(APP_SCHEME)://$(APP_DOMAIN)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

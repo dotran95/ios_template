@@ -2,10 +2,11 @@
 //  ApiConnection.swift
 //  app
 //
-//  Created by VTIT on 9/8/24.
+//  Created by dotn on 9/8/24.
 //
 
 import Moya
+import RxSwift
 
 public typealias ApiCompletion<T> = (_ result: Result<T, Error>) -> Void
 
@@ -43,6 +44,14 @@ extension ApiConnection {
         } catch {
             completion(.failure(error))
         }
-
     }
+    
+    // MARK: - Rx
+    func request<T: Decodable>(target: TargetType) -> Single<T> {
+        return apiProvider.rx.request(MultiTarget(target))
+            .filterSuccessfulStatusCodes()
+            .observe(on: MainScheduler.instance)
+            .map(T.self)
+    }
+    
 }

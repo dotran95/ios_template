@@ -2,7 +2,7 @@
 //  Configs.swift
 //  app
 //
-//  Created by VTIT on 8/8/24.
+//  Created by dotn on 8/8/24.
 //
 
 import Foundation

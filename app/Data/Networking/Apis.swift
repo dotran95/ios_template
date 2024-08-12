@@ -2,7 +2,7 @@
 //  PostAPI.swift
 //  app
 //
-//  Created by VTIT on 8/8/24.
+//  Created by dotn on 8/8/24.
 //
 
 import Foundation
@@ -10,11 +10,18 @@ import Moya
 
 enum Apis {
     case getUserInfo
+    case login(body: Encodable)
 }
 
 extension Apis: TargetType, AccessTokenAuthorizable {
     var authorizationType: Moya.AuthorizationType? {
-        return .bearer
+        switch self {
+        // UnAuth
+        case .login: return .none
+            
+        // Auth
+        case .getUserInfo: return .bearer
+        }
     }
     
     var baseURL: URL {
@@ -23,18 +30,30 @@ extension Apis: TargetType, AccessTokenAuthorizable {
     
     var path: String {
         switch self {
+        // UnAuth
+        case .login: return "/auth/login"
+            
+        // Auth
         case .getUserInfo: return "/auth/me"
         }
     }
     
     var method: Moya.Method {
         switch self {
+        // UnAuth
+        case .login: return .post
+            
+        // Auth
         case .getUserInfo: return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
+        // UnAuth
+        case .login(let body): return .requestJSONEncodable(body)
+            
+        // Auth
         case .getUserInfo: return .requestPlain
         }
     }
@@ -42,6 +61,4 @@ extension Apis: TargetType, AccessTokenAuthorizable {
     var headers: [String : String]? {
         nil
     }
-    
-    
 }

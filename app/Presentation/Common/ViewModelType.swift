@@ -2,10 +2,11 @@
 //  ViewModelType.swift
 //  app
 //
-//  Created by VTIT on 9/8/24.
+//  Created by dotn on 9/8/24.
 //
 
-import Foundation
+import RxRelay
+import RxSwift
 
 protocol ViewModelType {
     associatedtype Input
@@ -16,7 +17,17 @@ protocol ViewModelType {
 
 class ViewModel {
     
+    let errorSubject = ErrorTracker()
+    let loading = ActivityIndicator()
+    let disposeBag = DisposeBag()
+
+    init() {
+        errorSubject.asObservable().subscribe(on: MainScheduler.instance).subscribe(onNext: { err in
+            log.debug(err.localizedDescription)
+        }).disposed(by: disposeBag)
+    }
+    
     deinit {
-        logger.debug("\(type(of: self)): Deinited")
+        log.debug("\(type(of: self)): Deinited")
     }
 }

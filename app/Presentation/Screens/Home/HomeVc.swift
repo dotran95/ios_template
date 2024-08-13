@@ -23,7 +23,8 @@ class HomeVc: ViewController {
         super.makeUI()
         let firstName = AuthManager.shared.user?.firstName ?? ""
         let lastName = AuthManager.shared.user?.lastName ?? ""
-        usernameLbl.text = "\(lastName) \(firstName)"
+        
+        LanguageManager.shared.localized("user_name", args: [firstName]).drive(usernameLbl.rx.text).disposed(by: disposebag)
         
         logoutButton.rx.tap.subscribe { _ in
             Application.shared.onLogout()

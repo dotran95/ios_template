@@ -14,11 +14,7 @@ protocol GetUserUsecase {
 
 struct GetUserUsecaseImpl: GetUserUsecase {
     var repository: any UserRepository
-    
-    init(repository: any UserRepository) {
-        self.repository = repository
-    }
-    
+
     func call() -> Single<UserModel> {
         return repository.getUserInfo()
     }

@@ -114,3 +114,6 @@ DerivedData
 Podfile.lock
 Pods
 *.xcworkspace
+
+# swiftlint
+Baseline.json

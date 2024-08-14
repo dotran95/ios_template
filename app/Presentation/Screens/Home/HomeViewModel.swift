@@ -9,15 +9,15 @@ import RxSwift
 import RxCocoa
 
 class HomeViewModel: ViewModel, ViewModelType {
-    
+
     // MARK: - Properties
-    
+
     struct Input { }
-    
+
     struct Output { }
-    
+
     // MARK: - Init
-    
+
     func transform(input: Input) -> Output {
         return Output()
     }

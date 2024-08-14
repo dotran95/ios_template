@@ -8,14 +8,10 @@
 import RxSwift
 
 struct UserRepositoryImpl: UserRepository {
-    
+
     var remoteDataSource: RemoteDataSource
-    
-    init(remoteDataSource: RemoteDataSource) {
-        self.remoteDataSource = remoteDataSource
-    }
-    
+
     func getUserInfo() -> Single<UserModel> {
-        return remoteDataSource.getUserInfo().map({ UserModel.fromApi(res: $0) })
+        return remoteDataSource.getUserInfo().map({ UserModel.fromApi(result: $0) })
     }
 }

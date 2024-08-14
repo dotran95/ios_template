@@ -9,6 +9,6 @@ import RxSwift
 
 protocol AuthRepository {
     var remoteDataSource: RemoteDataSource { get set }
-    
+
     func login(username: String, password: String) -> Single<LoginResponse>
 }

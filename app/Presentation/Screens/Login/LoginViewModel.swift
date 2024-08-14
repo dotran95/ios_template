@@ -9,31 +9,32 @@ import RxSwift
 import RxCocoa
 
 class LoginViewModel: ViewModel, ViewModelType {
-    
+
     // MARK: - Properties
     private let loginUsecase: LoginUsecase
-    
+
     struct Input {
         let username: Driver<String>
         let password: Driver<String>
         let trigger: Driver<Void>
     }
-    
+
     struct Output {
         let isEnableLogin: Driver<Bool>
     }
-    
+
     // MARK: - Init
     init(loginUsecase: LoginUsecase) {
         self.loginUsecase = loginUsecase
     }
-    
+
     func transform(input: Input) -> Output {
         let isValidateUsername = input.username.map { $0.count > 5 && $0.count < 20 }
         let isValidatePassword = input.password.map { $0.count > 5 && $0.count <= 10 }
-        
-        let isEnableLoginButton = Driver.combineLatest(isValidatePassword, isValidateUsername).map({ $0 && $1 })
-        
+
+        let isEnableLoginButton = Driver.combineLatest(isValidatePassword, isValidateUsername)
+            .map({ $0 && $1 })
+
         input.trigger
             .withLatestFrom(isEnableLoginButton)
             .withLatestFrom(Driver.combineLatest(input.username, input.password))
@@ -56,7 +57,7 @@ class LoginViewModel: ViewModel, ViewModelType {
                                                     image: result.image)
                 Application.shared.presentInitialScreen()
             }).disposed(by: disposeBag)
-        
+
         return Output(isEnableLogin: isEnableLoginButton)
     }
 }

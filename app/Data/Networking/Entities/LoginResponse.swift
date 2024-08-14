@@ -12,7 +12,6 @@ struct LoginParams: Encodable {
     let username, password: String
 }
 
-
 struct LoginResponse: Codable {
     let id: Int?
     let username, email, firstName, lastName: String?

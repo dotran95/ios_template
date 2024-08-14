@@ -12,13 +12,23 @@ struct UserModel: Codable {
     let email, firstName, lastName: String?
     let gender: String?
     let image: String?
-    
-    static func fromApi(res: GetUserRespose) -> UserModel {
-        return UserModel(id: res.id, email: res.email, firstName: res.firstName, lastName: res.lastName, gender: res.gender, image: res.image)
+
+    static func fromApi(result: GetUserRespose) -> UserModel {
+        return UserModel(id: result.id,
+                         email: result.email,
+                         firstName: result.firstName,
+                         lastName: result.lastName,
+                         gender: result.gender,
+                         image: result.image)
     }
-    
-    static func fromApi(res: LoginResponse) -> UserModel {
-        return UserModel(id: res.id, email: res.email, firstName: res.firstName, lastName: res.lastName, gender: res.gender, image: res.image)
+
+    static func fromApi(result: LoginResponse) -> UserModel {
+        return UserModel(id: result.id,
+                         email: result.email,
+                         firstName: result.firstName,
+                         lastName: result.lastName,
+                         gender: result.gender,
+                         image: result.image)
     }
 
 }

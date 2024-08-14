@@ -16,18 +16,18 @@ protocol ViewModelType {
 }
 
 class ViewModel {
-    
+
     let errorSubject = ErrorTracker()
     let loading = ActivityIndicator()
     let disposeBag = DisposeBag()
 
     init() {
-        errorSubject.asObservable().subscribe(on: MainScheduler.instance).subscribe(onNext: { err in
-            log.debug(err.localizedDescription)
+        errorSubject.asObservable().subscribe(on: MainScheduler.instance).subscribe(onNext: { error in
+            logger.debug(error.localizedDescription)
         }).disposed(by: disposeBag)
     }
-    
+
     deinit {
-        log.debug("\(type(of: self)): Deinited")
+        logger.debug("\(type(of: self)): Deinited")
     }
 }

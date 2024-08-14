@@ -8,20 +8,18 @@
 import Foundation
 
 extension String {
-    func localized(_ lanCode: String, arguments: [CVarArg] = []) -> String {
+    func localized(_ lanCode: String) -> String {
         guard
             let bundlePath = Bundle.main.path(forResource: lanCode, ofType: "lproj"),
             let bundle = Bundle(path: bundlePath)
         else { return "" }
-        
-        let localized = NSLocalizedString(
+
+        return NSLocalizedString(
             self,
             bundle: bundle,
             value: " ",
             comment: ""
         )
-        return String(format: localized, locale: nil, arguments: arguments)
-
     }
 
 }

@@ -32,7 +32,7 @@ class Application {
             window.rootViewController = story.instantiateInitialViewController()
         }
     }
-    
+
     func onLogout() {
         authManager.onLogOut()
         presentInitialScreen()

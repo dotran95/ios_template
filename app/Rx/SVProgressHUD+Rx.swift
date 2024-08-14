@@ -19,6 +19,5 @@ extension Reactive where Base: SVProgressHUD {
          }
       }
    }
-    
-}
 
+}

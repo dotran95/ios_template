@@ -8,7 +8,7 @@
 import Moya
 
 final class ApiProvider<Target: TargetType>: MoyaProvider<Target> {
-    
+
     init(plugins: [PluginType]) {
         var plugins = plugins
         if Configs.share.loggingEnabled {

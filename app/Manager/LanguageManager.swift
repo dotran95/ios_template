@@ -2,7 +2,7 @@
 //  ThemeManager.swift
 //  app
 //
-//  Created by VTIT on 13/8/24.
+//  Created by dotn on 13/8/24.
 //
 
 import RxRelay

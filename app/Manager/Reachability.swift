@@ -19,7 +19,7 @@ private class ReachabilityManager: NSObject {
     static let shared = ReachabilityManager()
 
     private let reachSubject = ReplaySubject<Bool>.create(bufferSize: 1)
-    
+
     var reach: Observable<Bool> {
         return reachSubject.asObservable()
     }

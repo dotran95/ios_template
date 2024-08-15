@@ -8,9 +8,12 @@
 import RxSwift
 import Moya
 
-struct AuthRepositoryImpl: AuthRepository {
+struct AuthRepositoryImpl: AuthRepositoryProtocol {
 
-    var remoteDataSource: RemoteDataSource
+    private let remoteDataSource: RemoteDataSourceProtocol
+    init(remoteDataSource: RemoteDataSourceProtocol) {
+        self.remoteDataSource = remoteDataSource
+    }
 
     func login(username: String, password: String) -> Single<LoginResponse> {
         let params = LoginParams(expiresInMins: 30, username: username, password: password)

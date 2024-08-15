@@ -7,10 +7,16 @@
 
 import RxSwift
 
-struct UserRepositoryImpl: UserRepository {
+struct UserRepositoryImpl: UserRepositoryProtocol {
 
-    var remoteDataSource: RemoteDataSource
+    // MARK: - Properties
+    private let remoteDataSource: RemoteDataSourceProtocol
 
+    init(remoteDataSource: RemoteDataSourceProtocol) {
+        self.remoteDataSource = remoteDataSource
+    }
+
+    // MARK: - Funcs
     func getUserInfo() -> Single<UserModel> {
         return remoteDataSource.getUserInfo().map({ UserModel.fromApi(result: $0) })
     }

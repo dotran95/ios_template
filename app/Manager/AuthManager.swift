@@ -6,43 +6,34 @@
 //
 
 import Foundation
+import KeychainAccess
 
 class AuthManager {
 
     static let shared = AuthManager()
 
+    // MARK: - Properties
+    var token: String? { return try? keychain.get(tokenKey) }
+    var isAuthenticated: Bool { token != nil }
+    private(set) var userInfo: UserModel?
+
+    // MARK: - Private Properties
+    fileprivate let tokenKey = "TokenKey"
+    fileprivate let keychain = Keychain(service: Configs.share.bundleIdentifier)
+
     private init() {}
 
-    private let tokenKey = "tokenKey"
-    private let userKey = "userKey"
-    private let userDefaults = UserDefaults.standard
-
-    var token: String? {
-        get {
-            return userDefaults.value(forKey: tokenKey) as? String
-        }
-        set {
-            return userDefaults.set(newValue, forKey: tokenKey)
-        }
+    func onLoggedIn(token: String, userInfo: UserModel) {
+        try? keychain.set(token, key: tokenKey)
+        self.userInfo = userInfo
     }
 
-    var user: UserModel? {
-        get {
-            guard let data = userDefaults.value(forKey: userKey) as? Data else { return nil }
-            guard let user = try? PropertyListDecoder().decode(UserModel.self, from: data) else { return nil }
-            return user
-        }
-        set {
-            guard let data = try? PropertyListEncoder().encode(newValue) else { return }
-            userDefaults.set(data, forKey: userKey)
-        }
+    func onUpdateUserInfo(userInfo: UserModel) {
+        self.userInfo = userInfo
     }
 
     func onLogOut() {
-        token = nil
-        user = nil
-        userDefaults.removeObject(forKey: tokenKey)
-        userDefaults.removeObject(forKey: userKey)
+        try? keychain.removeAll()
     }
 
 }

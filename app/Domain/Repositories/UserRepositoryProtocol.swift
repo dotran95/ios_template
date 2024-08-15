@@ -7,7 +7,6 @@
 
 import RxSwift
 
-protocol UserRepository {
-    var remoteDataSource: RemoteDataSource { get set }
+protocol UserRepositoryProtocol {
     func getUserInfo() -> Single<UserModel>
 }

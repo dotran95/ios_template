@@ -49,7 +49,6 @@ public class ActivityIndicator: SharedSequenceConvertibleType {
             .distinctUntilChanged()
     }
 
-    // swiftlint:disable:next line_length
     fileprivate func trackActivityOfObservable<Source: ObservableConvertibleType>(_ source: Source) -> Observable<Source.Element> {
         return Observable.using({ () -> ActivityToken<Source.Element> in
             self.increment()

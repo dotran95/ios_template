@@ -17,7 +17,7 @@ final class ApiConnection {
     private let apiProvider: ApiProvider<MultiTarget>
 
     private init() {
-        var plugins:[PluginType] = []
+        var plugins: [PluginType] = []
         if let token = AuthManager.shared.token {
             plugins.append(AccessTokenPlugin(tokenClosure: { _ in token }))
         }

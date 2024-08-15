@@ -7,7 +7,7 @@
 
 import RxSwift
 
-struct RemoteDataSourceImpl: RemoteDataSource {
+struct RemoteDataSourceImpl: RemoteDataSourceProtocol {
 
     func login(params: LoginParams) -> RxSwift.Single<LoginResponse> {
         return ApiConnection.share.request<LoginRespose>(target: Apis.login(body: params))

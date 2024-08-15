@@ -15,16 +15,16 @@ protocol ViewProtocol {
     func updateUI()
 }
 
-class ViewController: UIViewController, ViewProtocol {
+class ViewController<T: ViewModelType>: UIViewController, ViewProtocol {
 
     // MARK: Properties
+    let disposebag = DisposeBag()
 
     lazy private(set) var className: String = {
         return type(of: self).description().components(separatedBy: ".").last ?? ""
     }()
 
-    var viewModel: (any ViewModelType)?
-    let disposebag = DisposeBag()
+    var viewModel: T?
 
     override func viewDidLoad() {
         super.viewDidLoad()

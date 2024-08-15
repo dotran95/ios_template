@@ -7,8 +7,6 @@
 
 import UIKit
 
-// swiftlint:disable:next blanket_disable_command
-// swiftlint:disable line_length
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -18,7 +16,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard scene as? UIWindowScene != nil else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+
+        self.window = UIWindow(windowScene: windowScene)
+
+        let rootNC = UINavigationController(rootViewController: Application.shared.navigator.get(segue: .splash))
+        self.window?.rootViewController = rootNC
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

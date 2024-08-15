@@ -11,7 +11,7 @@ import RxCocoa
 class LoginViewModel: ViewModel, ViewModelType {
 
     // MARK: - Properties
-    private let loginUsecase: LoginUsecase
+    private let loginUsecase: LoginUsecaseProtocol
 
     struct Input {
         let username: Driver<String>
@@ -24,7 +24,7 @@ class LoginViewModel: ViewModel, ViewModelType {
     }
 
     // MARK: - Init
-    init(loginUsecase: LoginUsecase) {
+    init(loginUsecase: LoginUsecaseProtocol) {
         self.loginUsecase = loginUsecase
     }
 
@@ -41,21 +41,20 @@ class LoginViewModel: ViewModel, ViewModelType {
             .asObservable()
             .flatMapLatest { (username, password) in
                 return self.loginUsecase
-                    .call(username: username, password: password)
+                    .excute(username: username, password: password)
                     .trackError(to: self.errorSubject)
                     .trackActivity(self.loading)
                     .catch { _ in Observable.empty() }
             }
             .subscribe(onNext: { result in
                 guard let token = result.token else { return }
-                AuthManager.shared.token = token
-                AuthManager.shared.user = UserModel(id: result.id,
+                let user = UserModel(id: result.id,
                                                     email: result.email,
                                                     firstName: result.firstName,
                                                     lastName: result.lastName,
                                                     gender: result.gender,
                                                     image: result.image)
-                Application.shared.presentInitialScreen()
+                Application.shared.loggedIn(token: token, user: user)
             }).disposed(by: disposeBag)
 
         return Output(isEnableLogin: isEnableLoginButton)

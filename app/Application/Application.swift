@@ -12,9 +12,13 @@ class Application {
 
     // MARK: - Properties
     private let authManager: AuthManager
+    private(set) var appContainer: DIContainer
+    private(set) var navigator: Navigator
 
     private init() {
+        appContainer = DIContainer()
         authManager = AuthManager.shared
+        navigator = Navigator()
     }
 
     func presentInitialScreen() {
@@ -22,15 +26,20 @@ class Application {
               let sceneDelegate = windowScene.delegate as? SceneDelegate,
               let window = sceneDelegate.window else { return }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let story: UIStoryboard
-            if self.authManager.user != nil {
-                story = UIStoryboard(name: "Home", bundle: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let self = self else { return }
+            let isAuthenticated = self.authManager.isAuthenticated
+            if isAuthenticated {
+                self.navigator.show(segue: .home, sender: nil, transition: .root(in: window))
             } else {
-                story = UIStoryboard(name: "Auth", bundle: nil)
+                self.navigator.show(segue: .login, sender: nil, transition: .root(in: window))
             }
-            window.rootViewController = story.instantiateInitialViewController()
         }
+    }
+
+    func loggedIn(token: String, user: UserModel) {
+        authManager.onLoggedIn(token: token, userInfo: user)
+        presentInitialScreen()
     }
 
     func onLogout() {

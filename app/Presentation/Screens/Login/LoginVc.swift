@@ -7,23 +7,15 @@
 
 import UIKit
 
-class LoginVc: ViewController {
+class LoginVc: ViewController<LoginViewModel> {
 
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var loginButton: UIButton!
 
-    override func loadView() {
-        super.loadView()
-        let datasource = RemoteDataSourceImpl()
-        let repo = AuthRepositoryImpl(remoteDataSource: datasource)
-        let usecase = LoginUsecaseImpl(repository: repo)
-        viewModel = LoginViewModel(loginUsecase: usecase)
-    }
-
     override func bindViewModel() {
         super.bindViewModel()
-        guard let vm = viewModel as? LoginViewModel else {
+        guard let vm = viewModel else {
             return
         }
 
@@ -34,5 +26,7 @@ class LoginVc: ViewController {
         let output = vm.transform(input: input)
 
         _ = output.isEnableLogin.asObservable().bind(to: loginButton.rx.isEnabled).disposed(by: disposebag)
+
+        let a = DatabaseManager.shared
     }
 }

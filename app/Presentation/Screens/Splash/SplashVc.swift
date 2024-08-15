@@ -9,24 +9,20 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class SplashVc: ViewController {
+class SplashVc: ViewController<SplashViewModel> {
 
-    @IBOutlet weak var userNameLbl: UILabel!
-
-    override func loadView() {
-        super.loadView()
-        let datasource = RemoteDataSourceImpl()
-        let repo = UserRepositoryImpl(remoteDataSource: datasource)
-        let usecase = GetUserUsecaseImpl(repository: repo)
-        viewModel = SplashViewModel(userUsecase: usecase)
-    }
+    @IBOutlet weak private var userNameLbl: UILabel!
 
     override func bindViewModel() {
         super.bindViewModel()
-        guard let vm = viewModel as? SplashViewModel else {
+        guard let vm = viewModel else { return }
+        userNameLbl.text = "Loading..."
+
+        let isAuthenticated = AuthManager.shared.isAuthenticated
+        if !isAuthenticated {
+            Application.shared.presentInitialScreen()
             return
         }
-        userNameLbl.text = "Loading..."
 
         let output = vm.transform(input: SplashViewModel.Input())
         output.loggedIn

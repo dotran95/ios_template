@@ -8,14 +8,14 @@
 import UIKit
 import RxSwift
 
-class HomeVc: ViewController {
+class HomeVc: ViewController<HomeViewModel> {
 
     @IBOutlet weak private var usernameLbl: UILabel!
     @IBOutlet weak private var logoutButton: UIButton!
 
     override func makeUI() {
         super.makeUI()
-        let firstName = AuthManager.shared.user?.firstName ?? ""
+        let firstName = AuthManager.shared.userInfo?.firstName ?? ""
 
         "user_name".localized
             .map({ String(format: $0, firstName) })

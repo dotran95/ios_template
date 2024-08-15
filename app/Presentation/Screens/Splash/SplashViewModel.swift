@@ -11,7 +11,7 @@ import RxCocoa
 class SplashViewModel: ViewModel, ViewModelType {
 
     // MARK: - Properties
-    private let userUsecase: GetUserUsecase
+    private let userUsecase: GetUserUsecaseProtocol
 
     struct Input { }
 
@@ -20,22 +20,20 @@ class SplashViewModel: ViewModel, ViewModelType {
     }
 
     // MARK: - Init
-    init(userUsecase: GetUserUsecase) {
+    init(userUsecase: GetUserUsecaseProtocol) {
         self.userUsecase = userUsecase
     }
 
     func transform(input: Input) -> Output {
-
         let loggedIn = PublishRelay<Bool>()
 
-        let userApi = userUsecase.call()
-
-        userApi.subscribe(onSuccess: { user in
-                loggedIn.accept(true)
-                AuthManager.shared.user = user
-            }, onFailure: { _ in
-                loggedIn.accept(false)
-            }).disposed(by: disposeBag)
+        userUsecase.excute().subscribe(onSuccess: { user in
+            loggedIn.accept(true)
+            AuthManager.shared.onUpdateUserInfo(userInfo: user)
+        }, onFailure: { _ in
+            loggedIn.accept(false)
+            AuthManager.shared.onLogOut()
+        }).disposed(by: disposeBag)
 
         return Output(loggedIn: loggedIn)
     }

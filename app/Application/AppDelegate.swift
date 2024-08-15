@@ -9,9 +9,6 @@ import UIKit
 import RxSwift
 import IQKeyboardManagerSwift
 
-// swiftlint:disable:next blanket_disable_command
-// swiftlint:disable line_length
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

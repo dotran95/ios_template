@@ -7,7 +7,7 @@
 
 import RxSwift
 
-protocol RemoteDataSource {
+protocol RemoteDataSourceProtocol {
     func getUserInfo() -> Single<GetUserRespose>
     func login(params: LoginParams) -> Single<LoginResponse>
 }

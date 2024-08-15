@@ -19,11 +19,17 @@ target 'app' do
   pod 'SwiftLint', '~> 0.56.1'
   pod 'SwiftyBeaver', '~> 1.9.5'
 
+  #DI
+  pod 'Swinject'
+
   #UI
   pod 'Toast-Swift', '~> 5.1'
   pod 'SVProgressHUD', '~> 2.3'
   pod 'IQKeyboardManagerSwift', '~> 7.1.1'
-  
+
+  pod 'FMDB'
+  pod 'KeychainAccess'
+
   target 'appTests' do
     inherit! :search_paths
     # Pods for testing

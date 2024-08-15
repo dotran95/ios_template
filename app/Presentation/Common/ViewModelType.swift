@@ -15,19 +15,25 @@ protocol ViewModelType {
     func transform(input: Input) -> Output
 }
 
-class ViewModel {
+class ViewModel: NSObject {
 
     let errorSubject = ErrorTracker()
     let loading = ActivityIndicator()
     let disposeBag = DisposeBag()
 
-    init() {
+    lazy private(set) var className: String = {
+      return type(of: self).description().components(separatedBy: ".").last ?? ""
+    }()
+
+    override init() {
+        super.init()
         errorSubject.asObservable().subscribe(on: MainScheduler.instance).subscribe(onNext: { error in
             logger.debug(error.localizedDescription)
         }).disposed(by: disposeBag)
     }
 
     deinit {
-        logger.debug("\(type(of: self)): Deinited")
+        logger.verbose("DEINIT: \(self.className)")
     }
+
 }

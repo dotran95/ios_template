@@ -19,6 +19,12 @@
 		1C8B105C2C4FEBD700DF6C75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C8B105B2C4FEBD600DF6C75 /* GoogleService-Info.plist */; };
 		6BCB049FF6F176D463F3C357 /* Pods_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B6BD6E7F57F718E283200B /* Pods_app.framework */; };
 		C28367C5D90D559D7F5BDFBC /* Pods_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8C69C5F2215087B4B06B6E /* Pods_appTests.framework */; };
+		DE29825B2C6F00FE000A828A /* GetPostsUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29825A2C6F00FE000A828A /* GetPostsUsecase.swift */; };
+		DE29825D2C6F0141000A828A /* PostRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29825C2C6F0141000A828A /* PostRepositoryProtocol.swift */; };
+		DE29825F2C6F0175000A828A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE29825E2C6F0175000A828A /* PostModel.swift */; };
+		DE2982612C6F01FE000A828A /* Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2982602C6F01FE000A828A /* Paging.swift */; };
+		DE2982632C6F0425000A828A /* PostRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2982622C6F0425000A828A /* PostRepositoryImpl.swift */; };
+		DE2982652C6F0479000A828A /* GetPostsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2982642C6F0479000A828A /* GetPostsResponse.swift */; };
 		DE32AA7B2C6471720098ED99 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32AA7A2C6471720098ED99 /* Configs.swift */; };
 		DE32AA852C6482240098ED99 /* Apis.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE32AA842C6482240098ED99 /* Apis.swift */; };
 		DE3691A42C6C526600113044 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DE3691A32C6C526600113044 /* .swiftlint.yml */; };
@@ -29,7 +35,7 @@
 		DE7005CA2C6A1DA500AFD096 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7005C92C6A1DA500AFD096 /* LoginResponse.swift */; };
 		DE7005CC2C6A1F0E00AFD096 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7005CB2C6A1F0E00AFD096 /* AuthRepositoryProtocol.swift */; };
 		DE7005CE2C6A1F5B00AFD096 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7005CD2C6A1F5B00AFD096 /* AuthRepositoryImpl.swift */; };
-		DE7005D02C6A203300AFD096 /* LoginUsecaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7005CF2C6A203300AFD096 /* LoginUsecaseProtocol.swift */; };
+		DE7005D02C6A203300AFD096 /* LoginUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7005CF2C6A203300AFD096 /* LoginUsecase.swift */; };
 		DE7005D72C6B01BB00AFD096 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7005D62C6B01BB00AFD096 /* AuthManager.swift */; };
 		DE7A03362C69EA050029E1D7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7A03352C69EA050029E1D7 /* LoginViewModel.swift */; };
 		DE7A03382C69EA180029E1D7 /* LoginVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7A03372C69EA180029E1D7 /* LoginVc.swift */; };
@@ -50,7 +56,7 @@
 		DE7D6AFD2C6B73E50058A42B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = DE7D6AFC2C6B73E50058A42B /* Localizable.xcstrings */; };
 		DE7D6B002C6B75920058A42B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D6AFF2C6B75920058A42B /* String+Extension.swift */; };
 		DE8BA8272C699DE4000D0613 /* GetUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8BA8262C699DE4000D0613 /* GetUserResponse.swift */; };
-		DE8BA82A2C699F0E000D0613 /* GetUserUsecaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8BA8292C699F0E000D0613 /* GetUserUsecaseProtocol.swift */; };
+		DE8BA82A2C699F0E000D0613 /* GetUserUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8BA8292C699F0E000D0613 /* GetUserUsecase.swift */; };
 		DE8BA82E2C699F75000D0613 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8BA82D2C699F75000D0613 /* UserModel.swift */; };
 		DE8BA8312C69A03A000D0613 /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8BA8302C69A03A000D0613 /* UserRepositoryProtocol.swift */; };
 		DE8BA8342C69A077000D0613 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8BA8332C69A077000D0613 /* UserRepositoryImpl.swift */; };
@@ -116,6 +122,12 @@
 		C446D6373EB6209021C25431 /* Pods_app_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B6BD6E7F57F718E283200B /* Pods_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD066FA79EAF964203043B86 /* Pods-appTests.dev-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appTests.dev-release.xcconfig"; path = "Target Support Files/Pods-appTests/Pods-appTests.dev-release.xcconfig"; sourceTree = "<group>"; };
+		DE29825A2C6F00FE000A828A /* GetPostsUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsUsecase.swift; sourceTree = "<group>"; };
+		DE29825C2C6F0141000A828A /* PostRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepositoryProtocol.swift; sourceTree = "<group>"; };
+		DE29825E2C6F0175000A828A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		DE2982602C6F01FE000A828A /* Paging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paging.swift; sourceTree = "<group>"; };
+		DE2982622C6F0425000A828A /* PostRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepositoryImpl.swift; sourceTree = "<group>"; };
+		DE2982642C6F0479000A828A /* GetPostsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsResponse.swift; sourceTree = "<group>"; };
 		DE32AA7A2C6471720098ED99 /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		DE32AA842C6482240098ED99 /* Apis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apis.swift; sourceTree = "<group>"; };
 		DE3691A32C6C526600113044 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -126,7 +138,7 @@
 		DE7005C92C6A1DA500AFD096 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		DE7005CB2C6A1F0E00AFD096 /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
 		DE7005CD2C6A1F5B00AFD096 /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
-		DE7005CF2C6A203300AFD096 /* LoginUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUsecaseProtocol.swift; sourceTree = "<group>"; };
+		DE7005CF2C6A203300AFD096 /* LoginUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUsecase.swift; sourceTree = "<group>"; };
 		DE7005D62C6B01BB00AFD096 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		DE7A03352C69EA050029E1D7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DE7A03372C69EA180029E1D7 /* LoginVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVc.swift; sourceTree = "<group>"; };
@@ -147,7 +159,7 @@
 		DE7D6AFC2C6B73E50058A42B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		DE7D6AFF2C6B75920058A42B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		DE8BA8262C699DE4000D0613 /* GetUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserResponse.swift; sourceTree = "<group>"; };
-		DE8BA8292C699F0E000D0613 /* GetUserUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserUsecaseProtocol.swift; sourceTree = "<group>"; };
+		DE8BA8292C699F0E000D0613 /* GetUserUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserUsecase.swift; sourceTree = "<group>"; };
 		DE8BA82D2C699F75000D0613 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		DE8BA8302C69A03A000D0613 /* UserRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryProtocol.swift; sourceTree = "<group>"; };
 		DE8BA8332C69A077000D0613 /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -372,6 +384,7 @@
 				DE7C5C1E2C65CE4700E31348 /* VoidResponse.swift */,
 				DE8BA8262C699DE4000D0613 /* GetUserResponse.swift */,
 				DE7005C92C6A1DA500AFD096 /* LoginResponse.swift */,
+				DE2982642C6F0479000A828A /* GetPostsResponse.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -390,6 +403,8 @@
 			isa = PBXGroup;
 			children = (
 				DE8BA82D2C699F75000D0613 /* UserModel.swift */,
+				DE29825E2C6F0175000A828A /* PostModel.swift */,
+				DE2982602C6F01FE000A828A /* Paging.swift */,
 			);
 			path = Enities;
 			sourceTree = "<group>";
@@ -445,8 +460,9 @@
 		DE8BA8282C699EED000D0613 /* Usecases */ = {
 			isa = PBXGroup;
 			children = (
-				DE8BA8292C699F0E000D0613 /* GetUserUsecaseProtocol.swift */,
-				DE7005CF2C6A203300AFD096 /* LoginUsecaseProtocol.swift */,
+				DE8BA8292C699F0E000D0613 /* GetUserUsecase.swift */,
+				DE7005CF2C6A203300AFD096 /* LoginUsecase.swift */,
+				DE29825A2C6F00FE000A828A /* GetPostsUsecase.swift */,
 			);
 			path = Usecases;
 			sourceTree = "<group>";
@@ -456,6 +472,7 @@
 			children = (
 				DE8BA8302C69A03A000D0613 /* UserRepositoryProtocol.swift */,
 				DE7005CB2C6A1F0E00AFD096 /* AuthRepositoryProtocol.swift */,
+				DE29825C2C6F0141000A828A /* PostRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -465,6 +482,7 @@
 			children = (
 				DE8BA8332C69A077000D0613 /* UserRepositoryImpl.swift */,
 				DE7005CD2C6A1F5B00AFD096 /* AuthRepositoryImpl.swift */,
+				DE2982622C6F0425000A828A /* PostRepositoryImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -815,13 +833,16 @@
 				DE8BA8342C69A077000D0613 /* UserRepositoryImpl.swift in Sources */,
 				DE7D6AF52C6B472D0058A42B /* ObservableConvertibleType+Error.swift in Sources */,
 				DE7C5C302C66253600E31348 /* ViewController.swift in Sources */,
-				DE8BA82A2C699F0E000D0613 /* GetUserUsecaseProtocol.swift in Sources */,
+				DE8BA82A2C699F0E000D0613 /* GetUserUsecase.swift in Sources */,
 				DE7A4FE32C6DB50A00A97D40 /* Navigator.swift in Sources */,
+				DE29825B2C6F00FE000A828A /* GetPostsUsecase.swift in Sources */,
 				DE7C5C1F2C65CE4700E31348 /* VoidResponse.swift in Sources */,
 				DE7C5C2E2C66248900E31348 /* SplashViewModel.swift in Sources */,
+				DE2982632C6F0425000A828A /* PostRepositoryImpl.swift in Sources */,
 				DE96F46C2C64BC6C004C6280 /* AppLogger.swift in Sources */,
 				DE7D6B002C6B75920058A42B /* String+Extension.swift in Sources */,
 				DE7005CA2C6A1DA500AFD096 /* LoginResponse.swift in Sources */,
+				DE2982652C6F0479000A828A /* GetPostsResponse.swift in Sources */,
 				DE7005CE2C6A1F5B00AFD096 /* AuthRepositoryImpl.swift in Sources */,
 				DE7C5C292C65F82D00E31348 /* SplashVc.swift in Sources */,
 				DE8BA8312C69A03A000D0613 /* UserRepositoryProtocol.swift in Sources */,
@@ -831,19 +852,22 @@
 				DE32AA852C6482240098ED99 /* Apis.swift in Sources */,
 				DE8BA83A2C69A11C000D0613 /* RemoteDataSourceImpl.swift in Sources */,
 				DE7005C82C6A10BC00AFD096 /* Application.swift in Sources */,
+				DE29825F2C6F0175000A828A /* PostModel.swift in Sources */,
 				DE32AA7B2C6471720098ED99 /* Configs.swift in Sources */,
 				DE7A03382C69EA180029E1D7 /* LoginVc.swift in Sources */,
+				DE29825D2C6F0141000A828A /* PostRepositoryProtocol.swift in Sources */,
 				DE7005C42C6A0E6000AFD096 /* HomeVc.swift in Sources */,
 				DE7005CC2C6A1F0E00AFD096 /* AuthRepositoryProtocol.swift in Sources */,
 				DED1FF9F2C6D9A04006807AC /* Container.swift in Sources */,
 				DE7C5C132C65BF1A00E31348 /* ApiConnection.swift in Sources */,
 				DE7A4FE12C6DB39100A97D40 /* HomeDIContainer.swift in Sources */,
-				DE7005D02C6A203300AFD096 /* LoginUsecaseProtocol.swift in Sources */,
+				DE7005D02C6A203300AFD096 /* LoginUsecase.swift in Sources */,
 				DE7A4FDF2C6DB25000A97D40 /* LoginDIContainer.swift in Sources */,
 				DE8BA82E2C699F75000D0613 /* UserModel.swift in Sources */,
 				DE7C5C172C65C05F00E31348 /* ApiProvider.swift in Sources */,
 				DE7A03362C69EA050029E1D7 /* LoginViewModel.swift in Sources */,
 				DE8BA8272C699DE4000D0613 /* GetUserResponse.swift in Sources */,
+				DE2982612C6F01FE000A828A /* Paging.swift in Sources */,
 				DE7D6AFB2C6B72100058A42B /* LanguageManager.swift in Sources */,
 				DED1FF9D2C6D9382006807AC /* SplashDIContainer.swift in Sources */,
 				DE8BA8372C69A0B0000D0613 /* RemoteDataSource.swift in Sources */,

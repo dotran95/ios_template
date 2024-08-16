@@ -22,13 +22,13 @@ struct DIContainer {
 
         // MARK: - Repositoris
         container.register(UserRepositoryProtocol.self) { r in UserRepositoryImpl(remoteDataSource: r.resolve(RemoteDataSourceProtocol.self)!) }
-
+        container.register(PostRepositoryProtocol.self) { r in PostRepositoryImpl(remoteDataSource: r.resolve(RemoteDataSourceProtocol.self)!) }
         container.register(AuthRepositoryProtocol.self) { r in AuthRepositoryImpl(remoteDataSource: r.resolve(RemoteDataSourceProtocol.self)!) }
 
         // MARK: - Usecases
         container.register(GetUserUsecaseProtocol.self) { r in GetUserUsecaseImpl(repository: r.resolve(UserRepositoryProtocol.self)!) }
-
         container.register(LoginUsecaseProtocol.self) { r in LoginUsecaseImpl(repository: r.resolve(AuthRepositoryProtocol.self)!) }
+        container.register(GetPostsUsecaseProtocol.self) { r in GetPostsUsecaseImpl(repository: r.resolve(PostRepositoryProtocol.self)!) }
     }
 
 }

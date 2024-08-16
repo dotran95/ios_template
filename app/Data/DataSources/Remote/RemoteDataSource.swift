@@ -8,6 +8,7 @@
 import RxSwift
 
 protocol RemoteDataSourceProtocol {
-    func getUserInfo() -> Single<GetUserRespose>
     func login(params: LoginParams) -> Single<LoginResponse>
+    func getUserInfo() -> Single<GetUserRespose>
+    func getPosts(limit: Int, skip: Int) -> Single<GetPostsResponse>
 }

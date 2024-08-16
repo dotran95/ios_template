@@ -11,6 +11,7 @@ import Moya
 struct AuthRepositoryImpl: AuthRepositoryProtocol {
 
     private let remoteDataSource: RemoteDataSourceProtocol
+    
     init(remoteDataSource: RemoteDataSourceProtocol) {
         self.remoteDataSource = remoteDataSource
     }

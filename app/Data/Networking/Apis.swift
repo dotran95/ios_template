@@ -9,8 +9,9 @@ import Foundation
 import Moya
 
 enum Apis {
-    case getUserInfo
     case login(body: Encodable)
+    case getUserInfo
+    case posts(limit: Int, skip: Int)
 }
 
 extension Apis: TargetType, AccessTokenAuthorizable {
@@ -20,7 +21,7 @@ extension Apis: TargetType, AccessTokenAuthorizable {
         case .login: return .none
 
         // Auth
-        case .getUserInfo: return .bearer
+        case .getUserInfo, .posts: return .bearer
         }
     }
 
@@ -35,6 +36,7 @@ extension Apis: TargetType, AccessTokenAuthorizable {
 
         // Auth
         case .getUserInfo: return "/auth/me"
+        case .posts: return "/posts"
         }
     }
 
@@ -44,7 +46,7 @@ extension Apis: TargetType, AccessTokenAuthorizable {
         case .login: return .post
 
         // Auth
-        case .getUserInfo: return .get
+        case .getUserInfo, .posts: return .get
         }
     }
 
@@ -55,6 +57,7 @@ extension Apis: TargetType, AccessTokenAuthorizable {
 
         // Auth
         case .getUserInfo: return .requestPlain
+        case .posts(let limit, let skip): return .requestParameters(parameters: ["limit": limit, "skip": skip], encoding: URLEncoding.default)
         }
     }
 

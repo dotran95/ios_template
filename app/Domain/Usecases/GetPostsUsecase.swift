@@ -24,4 +24,3 @@ struct GetPostsUsecaseImpl: GetPostsUsecaseProtocol {
         return repository.getPosts(limit, skip: skip)
     }
 }
-

@@ -30,7 +30,13 @@ class ViewController<T: ViewModelType>: UIViewController, ViewProtocol {
         super.viewDidLoad()
         makeUI()
         bindViewModel()
+    }
 
+    func makeUI() { }
+
+    func updateUI() { }
+
+    func bindViewModel() {
         guard let vm = viewModel as? ViewModel else {
             return
         }
@@ -43,12 +49,6 @@ class ViewController<T: ViewModelType>: UIViewController, ViewProtocol {
             .drive(SVProgressHUD.rx.isAnimating)
             .disposed(by: disposebag)
     }
-
-    func makeUI() { }
-
-    func updateUI() { }
-
-    func bindViewModel() { }
 
     deinit {
 #if DEBUG

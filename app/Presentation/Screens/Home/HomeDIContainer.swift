@@ -11,11 +11,12 @@ class HomeDIContainer {
 
     static func makeViewController() -> HomeVc {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeVc") as? HomeVc else {
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "HomeVc") as? HomeVc,
+                let usecase = Application.shared.appContainer.resolve(GetPostsUsecaseProtocol.self) else {
             fatalError("LoginDIContainer not found")
         }
 
-        let viewModel = HomeViewModel()
+        let viewModel = HomeViewModel(getPostsUsercase: usecase)
         vc.viewModel = viewModel
         return vc
     }

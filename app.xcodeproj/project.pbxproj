@@ -55,6 +55,8 @@
 		DE7D6AFB2C6B72100058A42B /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D6AFA2C6B72100058A42B /* LanguageManager.swift */; };
 		DE7D6AFD2C6B73E50058A42B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = DE7D6AFC2C6B73E50058A42B /* Localizable.xcstrings */; };
 		DE7D6B002C6B75920058A42B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D6AFF2C6B75920058A42B /* String+Extension.swift */; };
+		DE8AA8282C72D7BB00729EFC /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AA8272C72D7BA00729EFC /* TableViewController.swift */; };
+		DE8AA82A2C733FD800729EFC /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AA8292C733FD800729EFC /* PostCell.swift */; };
 		DE8BA8272C699DE4000D0613 /* GetUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8BA8262C699DE4000D0613 /* GetUserResponse.swift */; };
 		DE8BA82A2C699F0E000D0613 /* GetUserUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8BA8292C699F0E000D0613 /* GetUserUsecase.swift */; };
 		DE8BA82E2C699F75000D0613 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8BA82D2C699F75000D0613 /* UserModel.swift */; };
@@ -158,6 +160,8 @@
 		DE7D6AFA2C6B72100058A42B /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		DE7D6AFC2C6B73E50058A42B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		DE7D6AFF2C6B75920058A42B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		DE8AA8272C72D7BA00729EFC /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		DE8AA8292C733FD800729EFC /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		DE8BA8262C699DE4000D0613 /* GetUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserResponse.swift; sourceTree = "<group>"; };
 		DE8BA8292C699F0E000D0613 /* GetUserUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserUsecase.swift; sourceTree = "<group>"; };
 		DE8BA82D2C699F75000D0613 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -354,6 +358,7 @@
 				DE7005C32C6A0E6000AFD096 /* HomeVc.swift */,
 				DE7005C52C6A0E8700AFD096 /* HomeViewModel.swift */,
 				DE7A4FE02C6DB39100A97D40 /* HomeDIContainer.swift */,
+				DE8AA8292C733FD800729EFC /* PostCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 			children = (
 				DE7C5C2B2C6620E200E31348 /* ViewModelType.swift */,
 				DE7C5C2F2C66253600E31348 /* ViewController.swift */,
+				DE8AA8272C72D7BA00729EFC /* TableViewController.swift */,
 			);
 			name = Common;
 			path = Presentation/Common;
@@ -829,6 +835,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE8AA82A2C733FD800729EFC /* PostCell.swift in Sources */,
 				DED5E5742C6E03DF007CD802 /* Database.swift in Sources */,
 				DE8BA8342C69A077000D0613 /* UserRepositoryImpl.swift in Sources */,
 				DE7D6AF52C6B472D0058A42B /* ObservableConvertibleType+Error.swift in Sources */,
@@ -872,6 +879,7 @@
 				DED1FF9D2C6D9382006807AC /* SplashDIContainer.swift in Sources */,
 				DE8BA8372C69A0B0000D0613 /* RemoteDataSource.swift in Sources */,
 				DE7005C62C6A0E8700AFD096 /* HomeViewModel.swift in Sources */,
+				DE8AA8282C72D7BB00729EFC /* TableViewController.swift in Sources */,
 				1C8B100C2C4FD59900DF6C75 /* AppDelegate.swift in Sources */,
 				DE7D6AF92C6B6D180058A42B /* ActivityIndicator.swift in Sources */,
 				1C8B100E2C4FD59900DF6C75 /* SceneDelegate.swift in Sources */,

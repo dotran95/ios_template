@@ -26,7 +26,5 @@ class LoginVc: ViewController<LoginViewModel> {
         let output = vm.transform(input: input)
 
         _ = output.isEnableLogin.asObservable().bind(to: loginButton.rx.isEnabled).disposed(by: disposebag)
-
-        let a = DatabaseManager.shared
     }
 }

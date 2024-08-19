@@ -26,6 +26,7 @@ target 'app' do
   pod 'Toast-Swift', '~> 5.1'
   pod 'SVProgressHUD', '~> 2.3'
   pod 'IQKeyboardManagerSwift', '~> 7.1.1'
+  pod 'SnapKit'
 
   pod 'FMDB'
   pod 'KeychainAccess'

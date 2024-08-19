@@ -5,9 +5,6 @@
 //  Created by VTIT on 16/8/24.
 //
 
-
-import Foundation
-
 // MARK: - PostsResponse
 struct GetPostsResponse: Codable {
     let posts: [PostResponse]?
@@ -32,4 +29,3 @@ struct PostResponse: Codable {
 struct ReactionsResponse: Codable {
     let likes, dislikes: Int?
 }
-
